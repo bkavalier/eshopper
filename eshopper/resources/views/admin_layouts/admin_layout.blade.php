@@ -12,6 +12,8 @@
 <link href="{{asset('backend/fonts/css/font-awesome.css')}}" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('css/jquery.gritter.css')}}" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{asset('backend/js/admin_script.js')}}"></script>
 </head>
 <body>
 
@@ -54,6 +56,8 @@
 <script src="{{asset('backend/js/matrix.popover.js')}}"></script> 
 <script src="{{asset('backend/js/jquery.dataTables.min.js')}}"></script> 
 <script src="{{asset('backend/js/matrix.tables.js')}}"></script> 
+<!--Check Password -->
+
 
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
@@ -79,5 +83,7 @@ function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
 </script>
+
+
 </body>
 </html>
