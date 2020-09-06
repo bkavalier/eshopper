@@ -6,7 +6,30 @@
   		<?php $active = ""; ?>
   	@endif
     <li class="{{$active}}"><a href="{{url('/admin/dashboard')}}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
+    @if(Session::get('page')=="sections" || Session::get('page')=="categories")
+  		<?php $active = "active"; ?>
+  	@else
+  		<?php $active = ""; ?>
+  	@endif
+    <li class="submenu {{$active}}"> <a href="#"><i class="icon icon-file"></i> <span>Categories</span> <span class="label label-important">5</span></a>
+      <ul>
+      @if(Session::get('page')=="sections")
+  		<?php $active = "active"; ?>
+  	@else
+  		<?php $active = ""; ?>
+  	@endif
+        <li class="{{$active}}"><a href="{{url('/admin/sections')}}">Sections</a></li>
+        @if(Session::get('page')=="categories")
+  		<?php $active = "active"; ?>
+  	@else
+  		<?php $active = ""; ?>
+  	@endif
+        <li class="{{$active}}"><a href="{{url('/admin/categories')}}">Categories</a></li>
+      </ul>
+    </li>
+    
+    
+    
     <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>
     <li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
     <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a></li>

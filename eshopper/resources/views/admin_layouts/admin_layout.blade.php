@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/css/bootstrap-responsive.min.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/css/fullcalendar.css')}}" />
+<link rel="stylesheet" href="{{asset('backend/css/uniform.css')}}" />
+<link rel="stylesheet" href="{{asset('backend/css/select2.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/css/matrix-style.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/css/matrix-media.css')}}" />
 <link href="{{asset('backend/fonts/css/font-awesome.css')}}" rel="stylesheet" />
@@ -14,6 +16,16 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('backend/js/admin_script.js')}}"></script>
+<script>
+$(document).ready(function(){
+  $("#myInputSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#mySectionsTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </head>
 <body>
 
@@ -53,8 +65,10 @@
 <script src="{{asset('backend/js/jquery.wizard.js')}}"></script> 
 <script src="{{asset('backend/js/jquery.uniform.js')}}"></script> 
 <script src="{{asset('backend/js/select2.min.js')}}"></script> 
+<script src="{{asset('backend/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('backend/js/matrix.popover.js')}}"></script> 
 <script src="{{asset('backend/js/jquery.dataTables.min.js')}}"></script> 
+<script src="{{asset('backend/js/matrix.js')}}"></script> 
 <script src="{{asset('backend/js/matrix.tables.js')}}"></script> 
 <!--Check Password -->
 
