@@ -24,7 +24,7 @@ class SectionController extends Controller
     			$status = 1;
     		}
     		Section::where('id',$data['section_id'])->update(['status'=>$status]);
-    return response()->json(['status'=>$status,'section_id'=>$data['section_id']]);
+    		return response()->json(['status'=>$status,'section_id'=>$data['section_id']]);
     	}
     }
 }

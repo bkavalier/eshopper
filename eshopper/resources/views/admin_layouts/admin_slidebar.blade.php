@@ -11,7 +11,7 @@
   	@else
   		<?php $active = ""; ?>
   	@endif
-    <li class="submenu {{$active}}"> <a href="#"><i class="icon icon-file"></i> <span>Categories</span> <span class="label label-important">5</span></a>
+    <li class="submenu {{$active}}"> <a href="#"><i class="icon icon-file"></i> <span>Categories</span></a>
       <ul>
       @if(Session::get('page')=="sections")
   		<?php $active = "active"; ?>
