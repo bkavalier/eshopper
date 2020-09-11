@@ -45,7 +45,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	//
+	//update-category-status
 	$(".updateCategoryStatus").click(function(){
 		var status = $(this).text();
 		var category_id = $(this).attr("category_id");
@@ -85,4 +85,47 @@ $(document).ready(function(){
 	});
 });
 	
+//Confirm Deletion of Record Category
+	$(".confirmDelete").click(function(){
+		var name = $(this).attr("name");
+		if(confirm("Are you sure to delete this "+name+"?")){
+			return true;
+		}
+		return false;
+	});
+	
+	
+//Confirm Deletion of image 
+$(".categoryImageDelete").click(function(){
+		var name = $(this).attr("name");
+		if(confirm("Are you sure to delete this "+name+"?")){
+			return true;
+		}
+		return false;
+	});
+		
+//update product status
+
+$(".updateProductStatus").click(function(){
+		var status = $(this).text();
+		var product_id = $(this).attr("product_id");
+		
+		$.ajax({
+			type:'POST',
+			url:'update-product-status',
+			data:{status:status,product_id,product_id},
+			success:function(resp){
+			//alert(resp['status']);
+			//alert(resp['section_id']); 
+			if(resp['status']==0){
+				$("#product-"+product_id).html("<a class='updateProductStatus' href='javascript:void(0)'>Inactive</a>");
+			}else{
+				$("#product-"+product_id).html("<a class='updateProductStatus' href='javascript:void(0)'>Active</a>");
+			}
+			},error:function(){
+				alert("Error");
+			}		
+		});
+	});	
+
 });

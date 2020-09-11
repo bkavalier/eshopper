@@ -29,15 +29,25 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Name</th>
+                  <th>Section</th>
+                  <th>ParentCategory</th>
+                  <th>Category</th>
                   <th>URL</th>
-                  <th>status</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody  id="mySectionsTable">
               @foreach($categories as $category)
+              @if(!isset($category->parentcategory->category_name))
+              	<?php $parent_category = "Root"; ?>
+              	@else
+              	<?php $parent_category = $category->parentcategory->category_name; ?>
+              @endif
                 <tr class="gradeX">
                   <td>{{$category->id}}</td>
+                  <td>{{$category->section->name}}</td>
+                  <td>{{$parent_category}}</td>
                   <td>{{$category->category_name}}</td>
                   <td>{{$category->url}}</td>
                   <td class="center">
@@ -46,6 +56,11 @@
                   	@else
                   		<a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)">Inactive</a>
                   	@endif
+                  </td>
+                  <td>
+                  <a href="{{ url('admin/add-edit-category/'.$category->id) }}">Edit</a>
+                  &nbsp;&nbsp;
+                  <a class="confirmDelete" name="Category" href="{{ url('admin/delete-category/'.$category->id) }}">Delete</a>
                   </td>
                 </tr>
               @endforeach

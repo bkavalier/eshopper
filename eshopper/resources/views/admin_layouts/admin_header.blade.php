@@ -1,5 +1,5 @@
 <div id="header">
-<!--  <h1><a href="{{url('admin/dashboard')}}">{{Auth::guard('admin')->user()->name}}</a></h1>-->
+<!--<h1><a href="#"></a></h1>-->
 <img src="{{url('backend/images/admin_images/'.Auth::guard('admin')->user()->image)}}" alt="Avatar" style="width:40px;border-radius: 50%;padding-top:10px;margin-left:30px;">
 </div>
 <!--close-Header-part--> 

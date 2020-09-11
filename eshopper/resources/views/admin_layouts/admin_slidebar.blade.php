@@ -25,6 +25,12 @@
   		<?php $active = ""; ?>
   	@endif
         <li class="{{$active}}"><a href="{{url('/admin/categories')}}">Categories</a></li>
+        @if(Session::get('page')=="products")
+  		<?php $active = "active"; ?>
+  	@else
+  		<?php $active = ""; ?>
+  	@endif
+        <li class="{{$active}}"><a href="{{url('/admin/products')}}">Products</a></li>
       </ul>
     </li>
     
