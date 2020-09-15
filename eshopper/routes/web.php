@@ -42,4 +42,14 @@ Route::prefix('/admin')->group(function(){
 	Route::post('update-product-status','ProductsController@updateProductStatus');
 	Route::get('delete-product/{id}','ProductsController@deleteProduct');
 	Route::match(['get','post'],'add-edit-product/{id?}','ProductsController@addEditProduct');
+	
+	//Attributes
+	Route::match(['get','post'],'add-attributes/{id}','ProductsController@addAttributes');
+	Route::post('edit-attributes/{id}','ProductsController@editAttributes');
+	Route::post('update-attribute-status','ProductsController@updateAttributeStatus');
+	Route::get('delete-attribute/{id}','ProductsController@deleteAttribute');
+	
+	//Add Image
+	Route::match(['get','post'],'add-images/{id}','ProductsController@addImages');
+	
 });

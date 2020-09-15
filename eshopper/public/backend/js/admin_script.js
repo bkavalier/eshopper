@@ -1,4 +1,19 @@
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+    }
+});
+
+
 $(document).ready(function(){
+
+
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr("content")
+    }
+});
+
 
 	//Check Admin password Currect ot incorrect
 	$("#current_pwd").keyup(function(){
@@ -95,6 +110,8 @@ $(document).ready(function(){
 	});
 	
 	
+	
+	
 //Confirm Deletion of image 
 $(".categoryImageDelete").click(function(){
 		var name = $(this).attr("name");
@@ -113,7 +130,7 @@ $(".updateProductStatus").click(function(){
 		$.ajax({
 			type:'POST',
 			url:'update-product-status',
-			data:{status:status,product_id,product_id},
+			data:{status:status,product_id:product_id},
 			success:function(resp){
 			//alert(resp['status']);
 			//alert(resp['section_id']); 
@@ -126,6 +143,57 @@ $(".updateProductStatus").click(function(){
 				alert("Error");
 			}		
 		});
-	});	
+	});
+	
+	$(".updateAttributeStatus").click(function(){
+		var status = $(this).text();
+		var attribute_id = $(this).attr("attribute_id");
+		
+		$.ajax({
+			
+    
+			type:'POST',
+			url:'update-attribute-status',
+			data:{status:status,attribute_id:attribute_id},
+			success:function(resp){
+			alert(resp);
+			if(resp['status']==0){
+				$("#attribute-"+attribute_id).html("Inactive");
+			}else{
+				$("#attribute-"+attribute_id).html("Active");
+			}
+			},error:function(){
+				alert("Error");
+			}
+
+		});
+	});
+	
+	
+
+	
+	//ADD DYNAMICALLY FIELDS
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div style="margin-top:10px;margin-left:2px;"><br><input type="text" name="size[]"/><input type="text" name="sku[]"/><input type="text" name="price[]"/><input type="text" name="stock[]"/><a href="javascript:void(0);" class="remove_button">REMOVE</a></div>'; //New input field html 
+    var x = 1; //Initial field counter is 1
+    
+    //Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+	
 
 });

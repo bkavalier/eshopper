@@ -66,9 +66,13 @@
                   	@endif
                   </td>
                   <td>
+                  
+                  <a href="{{ url('admin/add-attributes/'.$product->id) }}">Add Attributes</a>
                   <a href="{{ url('admin/add-edit-product/'.$product->id) }}">Edit</a>
+                  <a href="{{ url('admin/add-images/'.$product->id) }}">Add image</a>
                   &nbsp;&nbsp;
                   <a class="confirmDelete" name="Product" href="{{ url('admin/delete-product/'.$product->id) }}">Delete</a>
+                  
                   </td>
                 </tr>
               @endforeach
